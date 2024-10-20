@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inspiration&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    * {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/newyear1.jpg');
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .counter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      flex-direction: row;
+    }
+
+    p {
+      font-size: 12px;
+    }
+
+    .newyear {
+      font-family: 'Inspiration', cursive;
+      font-size: 50px;
+      font-weight: 400px;
+      margin-top: 30px;
+    }
+
+    .box {
+      width: 50px;
+      height: 50px;
+
+    }
+
+    .box h2 {
+      font-size: 20px;
+      font-weight: 500px;
+    }
+
+    .box small {
+      font-size: 10px;
+    }
+
+    @media(min-width:576px) {
+      .newyear {
+        font-size: 60px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+
+      .box h2 {
+        font-size: 30px;
+      }
+
+      .box {
+        width: 70px;
+        height: 70px;
+      }
+
+      .box small {
+        font-size: 15px;
+      }
+    }
+
+
+    @media(min-width:768px) {
+      .newyear {
+        font-size: 150px;
+      }
+
+      p {
+        font-size: 25px;
+      }
+
+      .box h2 {
+        font-size: 50px;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+      }
+
+      .box small {
+        font-size: 20px;
+      }
+    }
+  </style>
+  <title>project-1 :Countdown Timer</title>
+</head>
+
+<body>
+  <p>Countdown to</p>
+  <h2 class="newyear">New Year</h2>
+  <div class="counter">
+
+    <div class="box">
+      <h2 class="days">00</h2>
+      <small>Days</small>
+    </div>
+
+    <div class="box">
+      <h2 class="hours">00</h2>
+      <small>Hours</small>
+    </div>
+
+    <div class="box">
+      <h2 class="minutes">00</h2>
+      <small>Minutes</small>
+    </div>
+
+
+    <div class="box">
+      <h2 class="seconds">00</h2>
+      <small>Seconds</small>
+    </div>
+
+  </div>
+
+  <script>
+
+const days=document.querySelector('.days');
+const hours=document.querySelector('.hours');
+const minutes= document.querySelector(".minutes");
+let seconds=document.querySelector(".seconds");
+
+// document.querySelector('.days').innerHTML ="changes";
+
+    function updatetime() {
+      const currentyear = new Date().getFullYear();
+
+          
+      const newyear = new Date(`${currentyear + 1} 00:00:00`);
+
+
+      const currentdate = new Date();
+      const diff = newyear - currentdate;
+      const d = Math.floor(diff / 1000 / 60 / 60 / 24);
+      const h = Math.floor((diff / 1000 / 60 / 60) % 24);
+      const m = Math.floor((diff / 1000 / 60) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+     
+      days.innerHTML=d<10?"0"+d:d;
+      hours.innerHTML=h<10?"0"+h:h;
+      minutes.innerHTML=m<10?"0"+m:m;
+      seconds.innerHTML=s<10?"0"+s:s;
+    }
+
+
+     setInterval(updatetime,1000);
+
+  </script>
+
+</body>
+
+</html>
